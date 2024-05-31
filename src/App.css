@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.col-md-40 {
+  margin-bottom: 20px;
+}
+/* Estilos CSS para la línea divisora */
+.divisora {
+  border-left: 1px solid #ccc; /* Grosor y color de la línea */
+  height: 100%; /* Altura igual a la altura de la columna */
+}
