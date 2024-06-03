@@ -59,63 +59,111 @@ export const PedidoForm = () => {
     <div className="col-md-4 offset-md-4">
       <form onSubmit={handleSubmit} className="card card-body bg-secondary">
         <label htmlFor="nombreReceptor">Nombre del Receptor</label>
-        <input
-          type="text"
-          name="nombreReceptor"
-          value={pedido.nombreReceptor}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        />
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">person</i>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Nombre del Receptor"
+            name="nombreReceptor"
+            value={pedido.nombreReceptor}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <label htmlFor="telefono">Teléfono</label>
-        <input
-          type="text"
-          name="telefono"
-          value={pedido.telefono}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        />
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">phone</i>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Teléfono"
+            name="telefono"
+            value={pedido.telefono}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <label htmlFor="cedula">Cédula</label>
-        <input
-          type="text"
-          name="cedula"
-          value={pedido.cedula}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        />
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">credit_card</i>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Cédula"
+            name="cedula"
+            value={pedido.cedula}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <label htmlFor="direccion">Dirección</label>
-        <input
-          type="text"
-          name="direccion"
-          value={pedido.direccion}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        />
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">home</i>
+          </div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Dirección"
+            name="direccion"
+            value={pedido.direccion}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <label htmlFor="notas">Notas del Pedido</label>
-        <textarea
-          name="notas"
-          value={pedido.notas}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        ></textarea>
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">note</i>
+          </div>
+          <textarea
+            className="form-control"
+            placeholder="Notas del Pedido"
+            name="notas"
+            value={pedido.notas}
+            onChange={handleInputChange}
+          ></textarea>
+        </div>
+
         <label htmlFor="fechaEntrega">Fecha de Entrega</label>
-        <input
-          type="date"
-          name="fechaEntrega"
-          value={pedido.fechaEntrega}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        />
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">date_range</i>
+          </div>
+          <input
+            type="date"
+            className="form-control"
+            placeholder="Fecha de Entrega"
+            name="fechaEntrega"
+            value={pedido.fechaEntrega}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <label htmlFor="estado">Estado</label>
-        <select
-          name="estado"
-          value={pedido.estado}
-          onChange={handleInputChange}
-          className="form-control mb-3"
-        >
-          <option value="pendiente">Pendiente</option>
-          <option value="enviado">Enviado</option>
-          <option value="entregado">Entregado</option>
-        </select>
+        <div className="input-group mb-3">
+          <div className="input-group-text bg-">
+            <i className="material-icons">assignment</i>
+          </div>
+          <select
+            className="form-control"
+            name="estado"
+            value={pedido.estado}
+            onChange={handleInputChange}
+          >
+            <option value="pendiente">Pendiente</option>
+            <option value="enviado">Enviado</option>
+            <option value="entregado">Entregado</option>
+          </select>
+        </div>
+
         <button className="btn btn-primary btn-block">
           {params.id ? "Actualizar Pedido" : "Añadir Pedido"}
         </button>
