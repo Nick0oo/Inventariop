@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { savePedido, getPedido, updatePedido } from "../api";
 import { useParams, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const initialState = {
   direccion: "",
   notas: "",
   fechaEntrega: "",
-  estado: "",
+  estado: "pendiente",
 };
 
 export const PedidoForm = () => {
@@ -26,7 +26,7 @@ export const PedidoForm = () => {
 
     if (!params.id) {
       await savePedido(pedido);
-      toast("Nuevo Pedido Añadido", {
+      toast("Pedido Agregado", {
         type: "success",
       });
     } else {
@@ -37,7 +37,7 @@ export const PedidoForm = () => {
     }
 
     setPedido(initialState);
-    navigate("/pedidos");
+    navigate("/");
   };
 
   const getPedidoById = async (id) => {
@@ -56,115 +56,131 @@ export const PedidoForm = () => {
   }, [params.id]);
 
   return (
-    <div className="col-md-4 offset-md-4">
-      <form onSubmit={handleSubmit} className="card card-body bg-secondary">
-        <label htmlFor="nombreReceptor">Nombre del Receptor</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">person</i>
+    <div className="col-md-6 offset-md-3 main-container">
+      <form onSubmit={handleSubmit} className="card card-body bg-light card-custom">
+        <h3>{params.id ? "Actualizar Pedido" : "Agregar Pedido"}</h3>
+        
+        <div className="mb-3">
+          <label htmlFor="nombreReceptor">Nombre del Receptor</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">person</i>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nombre del Receptor"
+              name="nombreReceptor"
+              value={pedido.nombreReceptor}
+              onChange={handleInputChange}
+            />
           </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Nombre del Receptor"
-            name="nombreReceptor"
-            value={pedido.nombreReceptor}
-            onChange={handleInputChange}
-          />
         </div>
 
-        <label htmlFor="telefono">Teléfono</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">phone</i>
+        <div className="mb-3">
+          <label htmlFor="telefono">Teléfono</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">phone</i>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Teléfono"
+              name="telefono"
+              value={pedido.telefono}
+              onChange={handleInputChange}
+            />
           </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Teléfono"
-            name="telefono"
-            value={pedido.telefono}
-            onChange={handleInputChange}
-          />
         </div>
 
-        <label htmlFor="cedula">Cédula</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">credit_card</i>
+        <div className="mb-3">
+          <label htmlFor="cedula">Cédula</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">badge</i>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Cédula"
+              name="cedula"
+              value={pedido.cedula}
+              onChange={handleInputChange}
+            />
           </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Cédula"
-            name="cedula"
-            value={pedido.cedula}
-            onChange={handleInputChange}
-          />
         </div>
 
-        <label htmlFor="direccion">Dirección</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">home</i>
+        <div className="mb-3">
+          <label htmlFor="direccion">Dirección</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">location_on</i>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Dirección"
+              name="direccion"
+              value={pedido.direccion}
+              onChange={handleInputChange}
+            />
           </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Dirección"
-            name="direccion"
-            value={pedido.direccion}
-            onChange={handleInputChange}
-          />
         </div>
 
-        <label htmlFor="notas">Notas del Pedido</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">note</i>
+        <div className="mb-3">
+          <label htmlFor="notas">Notas del Pedido</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">note</i>
+            </div>
+            <textarea
+              className="form-control"
+              placeholder="Notas del Pedido"
+              name="notas"
+              value={pedido.notas}
+              onChange={handleInputChange}
+            ></textarea>
           </div>
-          <textarea
-            className="form-control"
-            placeholder="Notas del Pedido"
-            name="notas"
-            value={pedido.notas}
-            onChange={handleInputChange}
-          ></textarea>
         </div>
 
-        <label htmlFor="fechaEntrega">Fecha de Entrega</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">date_range</i>
+        <div className="mb-3">
+          <label htmlFor="fechaEntrega">Fecha de Entrega</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">event</i>
+            </div>
+            <input
+              type="date"
+              className="form-control"
+              placeholder="Fecha de Entrega"
+              name="fechaEntrega"
+              value={pedido.fechaEntrega}
+              onChange={handleInputChange}
+            />
           </div>
-          <input
-            type="date"
-            className="form-control"
-            placeholder="Fecha de Entrega"
-            name="fechaEntrega"
-            value={pedido.fechaEntrega}
-            onChange={handleInputChange}
-          />
         </div>
 
-        <label htmlFor="estado">Estado</label>
-        <div className="input-group mb-3">
-          <div className="input-group-text bg-">
-            <i className="material-icons">assignment</i>
+        <div className="mb-3">
+          <label htmlFor="estado">Estado</label>
+          <div className="input-group">
+            <div className="input-group-text">
+              <i className="material-icons">assignment</i>
+            </div>
+            <select
+              className="form-control"
+              name="estado"
+              value={pedido.estado}
+              onChange={handleInputChange}
+            >
+              <option value="pendiente">Pendiente</option>
+              <option value="enviado">Enviado</option>
+              <option value="entregado">Entregado</option>
+            </select>
           </div>
-          <select
-            className="form-control"
-            name="estado"
-            value={pedido.estado}
-            onChange={handleInputChange}
-          >
-            <option value="pendiente">Pendiente</option>
-            <option value="enviado">Enviado</option>
-            <option value="entregado">Entregado</option>
-          </select>
         </div>
 
-        <button className="btn btn-primary btn-block">
+        <button className="btn btn-primary btn-block btn-custom">
           {params.id ? "Actualizar Pedido" : "Añadir Pedido"}
         </button>
       </form>

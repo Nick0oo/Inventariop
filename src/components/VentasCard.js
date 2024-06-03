@@ -17,17 +17,17 @@ export function VentasCard({ venta }) {
 
   return (
     <div
-      className="card mb-3 card-venta"
+      className="card mb-3 card-custom"
       key={venta.id}
       onClick={() => navigate(`/editVenta/${venta.id}`)}
     >
       <div className="card-body">
         <div className="d-flex justify-content-between">
           <div>
-            <h4>{venta.productoVendido}</h4>
-            <h6>{venta.cantidad} unidades</h6>
-            <h6>{venta.vendedor}</h6>
-            <h6>{venta.fechaVenta}</h6>
+            <h4 className="card-title">{venta.productoVendido}</h4>
+            <p className="card-text">{venta.cantidad} unidades</p>
+            <p className="card-text">{venta.vendedor}</p>
+            <p className="card-text">{venta.fechaVenta}</p>
           </div>
           <button
             className="btn btn-danger btn-sm d-flex align-items-center"

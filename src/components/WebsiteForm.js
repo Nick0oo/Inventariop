@@ -54,11 +54,12 @@ export const WebsiteForm = (props) => {
   }, [params.id]);
 
   return (
-    <div className="col-md-4 offset-md-4">
-      <form onSubmit={handleSubmit} className="card card-body bg-secondary">
+    <div className="col-md-6 offset-md-3 main-container">
+      <form onSubmit={handleSubmit} className="card card-body bg-light card-custom">
+        <h3>Formulario de Producto</h3>
         <label htmlFor="nombre">Ingresa Tu Producto</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">add_box</i>
           </div>
           <input
@@ -73,22 +74,22 @@ export const WebsiteForm = (props) => {
 
         <label htmlFor="precio">Precio del Producto</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">attach_money</i>
           </div>
           <input
-            type="Number"
+            type="number"
             value={website.precio}
             name="precio"
             placeholder="Precio $"
-            className="form-control mb-"
+            className="form-control"
             onChange={handleInputChange}
           />
         </div>
         
         <label htmlFor="cantidad">Cantidad</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">add_box</i>
           </div>
           <input
@@ -111,9 +112,8 @@ export const WebsiteForm = (props) => {
           <option value="option2">INGREDIENTE</option>
         </select>
 
-
         <button
-          className="btn btn-primary btn-block"
+          className="btn btn-primary btn-block btn-custom"
           disabled={!website.nombre || !website.precio || !website.categoria || !website.cantidad}
         >
           {props.currentId === "" ? "Actualizar" : "Agregar"}

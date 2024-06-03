@@ -28,30 +28,28 @@ export function WebsiteCard({ link }) {
 
   return (
     <div
-      className="card mb-3 card-website"
+      className="card mb-3 card-website card-custom"
       key={link.id}
       onClick={() => navigate(`/edit/${link.id}`)}
     >
-      <div className="card-body">
-        <div className="d-flex justify-content-between">
-          <div>
-            <h4>{link.nombre}</h4>
-            <h6>{getDescription(link.categoria)}</h6>
-            <h6>{link.precio}$</h6>
-            <h6>{link.cantidad}</h6>
-          </div>
-          <button
-            className="btn btn-danger btn-sm d-flex align-items-center"
-            onClick={(e) => {
-              e.stopPropagation();
-              onDeleteLink(link.id);
-            }}
-          >
-            <i className="material-icons">close</i>
-          </button>
+      <div className="card-body d-flex">
+        <div className="flex-grow-1">
+          <h4 className="card-title">{link.nombre}</h4>
+          <p className="card-text">{getDescription(link.categoria)}</p>
+          <p className="card-text">{link.precio}$</p>
+          <p className="card-text">{link.cantidad}</p>
         </div>
+        <div className="divisora mx-3"></div>
+        <button
+          className="btn btn-danger btn-sm d-flex align-items-center"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDeleteLink(link.id);
+          }}
+        >
+          <i className="material-icons">close</i>
+        </button>
       </div>
     </div>
   );
 }
-

@@ -72,11 +72,12 @@ export const VentasForm = () => {
   }, [params.id]);
 
   return (
-    <div className="col-md-4 offset-md-4">
-      <form onSubmit={handleSubmit} className="card card-body bg-secondary">
+    <div className="col-md-6 offset-md-3 main-container">
+      <form onSubmit={handleSubmit} className="card card-body bg-light card-custom">
+        <h3>Formulario de Venta</h3>
         <label htmlFor="productoVendido">Producto Vendido</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">add_box</i>
           </div>
           <input
@@ -91,7 +92,7 @@ export const VentasForm = () => {
 
         <label htmlFor="cantidad">Cantidad</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">add_box</i>
           </div>
           <input
@@ -106,7 +107,7 @@ export const VentasForm = () => {
 
         <label htmlFor="vendedor">Vendedor</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">person</i>
           </div>
           <input
@@ -121,7 +122,7 @@ export const VentasForm = () => {
 
         <label htmlFor="fechaVenta">Fecha de Venta</label>
         <div className="input-group mb-3">
-          <div className="input-group-text bg-">
+          <div className="input-group-text">
             <i className="material-icons">date_range</i>
           </div>
           <input
@@ -135,7 +136,7 @@ export const VentasForm = () => {
         </div>
 
         <button
-          className="btn btn-primary btn-block"
+          className="btn btn-primary btn-block btn-custom"
           disabled={
             !venta.productoVendido ||
             !venta.cantidad ||
